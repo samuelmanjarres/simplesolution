@@ -1,6 +1,10 @@
 
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
+<%@page import="co.com.simplesolutions.dao.AppDao"%>
+<%@page import="java.applet.Applet"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@page import="co.com.simplesolutions.conexion.Conexion"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -30,15 +34,18 @@
 
 </div>
 
+
+<br>
+<br>
+<br>
 <h1 align="center" style="color: #7D5E3C">¡BIENVENIDO!</h1>
-<br>
-<br>
-<br>
-
-
+<div align="center">
+<img src="imagenes/contactanos.png">
+</div>
 
 
 </body>
+
 <style type="text/css">
 
 body{margin:0;
@@ -108,8 +115,11 @@ li:hover ul{
 </html>
 <%!	
 public void Llamar(){
-	Conexion c= new Conexion();
-	c.cargarDatos();
+	AppDao appDao= new AppDao();
+	appDao.ConsultarAppVersion();
+	
+	
+	
 } 
 
 %>
