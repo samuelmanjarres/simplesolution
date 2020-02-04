@@ -28,8 +28,15 @@
 					<li><a href="intRegistroCiclos.jsp">Registro de ciclos</a></li>
 					<li><a href="intRegistroMetricas.jsp">Registro de métricas</a></li>
 				</ul></li>
-			<li><a href="#">Resumen</a></li>
-			<li><a href="#">Tutorial</a></li>
+				<li><a href="#">Gestiones</a>
+
+<ul id="sub-menu">
+      <li><a href="gestApp.jsp">Gestión de aplicaciones</a></li>
+       <li><a href="gesVersion.jsp">Gestión de versiones</a></li>
+</ul>
+</li>
+			<li><a href="resumen.jsp">Resumen</a></li>
+			
 		</ul>
 
 	</div>
@@ -40,36 +47,65 @@
 			<label style="padding-left: 45px">ID:</label>
 		
 		
-
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-				type="text" name="idVersion" style="width: 124px"> <br>
-			<br> <br> <label style="padding-left: 45px">Aplicación:</label>
-
-			&nbsp;&nbsp;&nbsp; <select>
-				<option value="0">Elija una aplicación...</option>
-			
+<!-- Muestra la ID generada por la DB -->
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input
+				type="text" name="idVersion"  style="width: 124px" value="<%out.println( appDao.ConsultarIdVersion());
 				
-				<% ArrayList<AppObj> list = appDao.ConsultarAppVersion();
+				System.out.print(appDao.ConsultarIdVersion());
+				%>" readonly="readonly" disabled> <br>
+							<br> <br> <label style="padding-left: 45px">Aplicación:</label>
+							
+<!-- Muestra un listado con los nombres de las aplicaciones registradas -->
+			&nbsp;&nbsp;&nbsp; 
+			<select id="appVersion" name="appVersion" required="required">
+				<option value="" selected="selected">Elija una aplicación...</option>
+						<% ArrayList<AppObj> list = appDao.ConsultarAppVersion();
 				for(AppObj app: list){
 					out.println("<option value="+app.getId()+">"+app.getName()+"</option>");
 				}
 
 
 %>
+	
+
+<!-- el usuario ingresa el nombre de la versión a registrar -->
 			</select> <br> <br> <br> <label style="padding-left: 45px">Nombre:</label>
 			&nbsp; <input type="text" name="nombreVersion"
 				placeholder="Nombre de la version" autofocus="autofocus"
-				style="width: 200px">
+				style="width: 200px" required="required">
 		</div>
 		<br> <br>
 		<div style="padding-left: 155px">
-			<button class="boton_guardarVersion" type="submit">Guardar</button>
-
+		<!-- Botón que permite guardar los datos en la DB -->
+			<button class="boton_guardarVersion" type="submit" name="guardar" id="guardar">Guardar</button>
+			<!-- Botón que permite limpiar las cajas de textos y los select -->
+<button class="boton_guardarVersion" type="reset" >Limpiar</button>
 		</div>
+		
 
 	</form>
 
+
 </body>
+<script type="text/javascript">
+$('#guardar').click(function() {
+
+    if ($('#options').val().trim() === '') {
+        alert('Debe seleccionar una opción');
+
+    } else {
+        alert('Campo correcto');
+    }
+});
+
+function appId(){
+var sel = document.getElementById("appVersion").value;
+
+
+alert(""+sel);}
+
+</script>
 
 <style type="text/css">
 .boton_guardarVersion {
@@ -143,14 +179,15 @@ li:hover ul {
 	background: #B51D0A;
 	text-shadow: 0 0 2px #000;
 }
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 1px solid green;
+}
 </style>
 
 </html>
 
-<%!
-public void Llamar(){
-	AppDao appDao= new AppDao();
-		appDao.ConsultarNombreAPP();
-	
-}
-%>

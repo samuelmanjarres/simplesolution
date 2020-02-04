@@ -19,6 +19,8 @@ appDao.registrar(id, nombre);
 %>
 
 <script type="text/javascript">
+alert("Registrada exitosamente");
+window.history.go(-1);
 window.location('intRegistroAPP.jsp');
 </script>
 </body>

@@ -28,8 +28,15 @@
          <li><a href="intRegistroMetricas.jsp">Registro de métricas</a></li>
 </ul>
 </li>
-<li><a href="#">Resumen</a></li>
-<li><a href="#">Tutorial</a></li>
+<li><a href="#">Gestiones</a>
+
+<ul id="sub-menu">
+      <li><a href="intRegistroAPP.jsp">Gestión de aplicaciones</a></li>
+       <li><a href="intRegistroVersiones.jsp">Gestión de versiones</a></li>
+</ul>
+</li>
+<li><a href="resumen.jsp">Resumen</a></li>
+
 </ul>
 
 </div>

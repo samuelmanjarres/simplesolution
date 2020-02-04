@@ -16,24 +16,38 @@ public class AppObj {
 	String Name; 
 	String idVer;
 	String nameVers;
+	String idCiclo;
+	String nameCiclo;
+	String cantidad;
+	
 	public AppObj(String id, String name, String idVer, String nameVers) {
 		super();
 		this.id = id;
 		Name = name;
 		this.idVer = idVer;
 		this.nameVers = nameVers;
+	
 	}
-	public AppObj(String name, String nameVers) {
+	
+
+	public AppObj(String id, String name) {
 		super();
+		this.id = id;
 		Name = name;
-		this.nameVers = nameVers;
+	
 	}
+
 	public AppObj(String id, String name, String nameVers) {
 		super();
 		this.id = id;
 		Name = name;
 		this.nameVers = nameVers;
 	}
+	public AppObj(String nameCiclo) {
+		this.nameCiclo=nameCiclo;
+	}
+
+
 	public String getId() {
 		return id;
 	}
@@ -57,6 +71,40 @@ public class AppObj {
 	}
 	public void setNameVers(String nameVers) {
 		this.nameVers = nameVers;
+	}
+
+
+
+	public String getIdCiclo() {
+		return idCiclo;
+	}
+
+
+
+	public void setIdCiclo(String idCiclo) {
+		this.idCiclo = idCiclo;
+	}
+
+
+
+	public String getNameCiclo() {
+		return nameCiclo;
+	}
+
+
+
+	public void setNameCiclo(String nameCiclo) {
+		this.nameCiclo = nameCiclo;
+	}
+
+
+	public String getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(String cantidad) {
+		this.cantidad = cantidad;
 	} 
 	
 	
